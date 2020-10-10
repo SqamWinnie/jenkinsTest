@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>传参测试</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="/ref/img/favicon.png" rel="shortcut icon" >
+    <script src="/ref/js/jquery-3.3.1.js"></script>
+    <link href="/ref/css/pro.css" rel="stylesheet"  />
+</head>
+<script>
+    function returns(url){
+        $.ajax({
+            url: url,
+            type: 'post',
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+    function string(){
+        var url = "/param/string";
+        var d = '字符串参数';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {str:d},
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+    function array(){
+        var url = "/param/array";
+        var d = ['jackson',"masked"];
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(d),
+            contentType : 'application/json',    // 参数类型：json.
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+    function arrayList(){
+        var url = "/param/arrayList";
+        var d = ['jackson',"masked"];
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(d),
+            contentType : 'application/json',    // 参数类型：json.
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+    function demo(){
+        var url = "/param/demo";
+        // var d = [{id: '1', name: 'Jason'}, {id: '2', name: 'Mack'}];
+        var d = {id: '1', name: 'Jason'};
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(d),
+            contentType : 'application/json',    // 参数类型：json.
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+    function demoList(){
+        var url = "/param/demoList";
+        var d = [{id: '1', name: 'Jason'}, {id: '2', name: 'Mack'}];
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(d),
+            contentType : 'application/json',    // 参数类型：json.
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+</script>
+
+<body>
+<h3>返回值：</h3><hr/>
+<div>
+    <input type="button" class="button grey" onclick="returns('return/string')" value="string"/>
+    <input type="button" class="button grey" onclick="returns('return/int')" value="int"/>
+    <input type="button" class="button grey" onclick="returns('return/short')" value="short"/>
+    <input type="button" class="button grey" onclick="returns('return/long')" value="long"/>
+    <input type="button" class="button grey" onclick="returns('return/char')" value="char"/>
+    <input type="button" class="button grey" onclick="returns('return/byte')" value="byte"/>
+    <input type="button" class="button grey" onclick="returns('return/boolean')" value="boolean"/>
+    <input type="button" class="button grey" onclick="returns('return/double')" value="double"/>
+    <input type="button" class="button grey" onclick="returns('return/float')" value="float"/>
+    <input type="button" class="button grey" onclick="returns('return/list')" value="list"/>
+    <input type="button" class="button grey" onclick="returns('return/listDemo')" value="list<T>"/>
+    <input type="button" class="button grey" onclick="returns('return/map')" value="map"/>
+    <input type="button" class="button grey" onclick="returns('return/demo')" value="demo"/>
+    <input type="button" class="button grey" onclick="returns('return/result')" value="result"/>
+</div>
+<h3>传参：</h3><hr/>
+<div>
+    <input type="button" class="button grey" onclick="string()" value="字符串"/>
+    <input type="button" class="button grey" onclick="array()" value="数组接收数组"/>
+    <input type="button" class="button grey" onclick="arrayList()" value="list接收数组"/>
+    <input type="button" class="button grey" onclick="demo()" value="对象"/>
+    <input type="button" class="button grey" onclick="demoList()" value="对象数组"/>
+</div>
+
+<h3>mybatis：</h3><hr/>
+<label>用户名  </label>
+<input class="text" id="usr"/>
+<label>密码  </label>
+<input class="text" id="psd"/>
+<input type="button" class="button blue" onclick="query()" value="查询"/>
+<input type="button" class="button blue" onclick="save()" value="保存"/>
+
+<label>id  </label>
+<input class="text" id="id"/>
+<input type="button" class="button red" onclick="del()" value="删除"/>
+<script>
+
+    /*
+    $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(d),             // 参数：对象和字符串可以直接传，数组或复杂对象需要转 json
+            dataType : 'json',                   // 返回类型：json. 若不是 json 类型可以不写
+            contentType : 'application/json',    // 参数类型：json.
+            success: function (rs) {},
+            error: function (rs) {}
+        });
+
+*/
+
+    function query() {
+        var url = "/demo/query";
+        // var d = [{id: $("[name='id']").val(), name: $("[name='name']").val()}];
+        var usr = $("#usr").val(), psd = $("#psd").val(), i = $("#id").val();
+        var d = {userName: usr, password: psd, id: i};
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(d),
+            contentType: 'application/json',    // 参数类型：json.
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+    function save(){
+        var url = "/demo/save";
+        var usr = $("#usr").val(), psd = $("#psd").val(), d = $("#id").val();
+        var data = [{userName: usr, password: psd, id: d}];
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(data),
+            contentType : 'application/json',    // 参数类型：json.
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+    function del(){
+        var url = "/demo/del";
+        // var d = [{id: $("[name='id']").val(), name: $("[name='name']").val()}];
+        var ids = $("#id").val().split(',');
+        var d = [];
+        for (var k in ids) {
+            d.push({'id': ids[k]});
+        }
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(d),
+            contentType : 'application/json',    // 参数类型：json.
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>

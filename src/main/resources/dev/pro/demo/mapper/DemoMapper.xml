@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dev.pro.demo.mapper.DemoMapper">
+    <resultMap id="BaseResultMap" type="dev.pro.demo.dto.Demo">
+        <result column="id" property="id" jdbcType="DECIMAL" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="is_enable" property="isEnable" jdbcType="VARCHAR" />
+        <result column="dept_code" property="deptCode" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--查询-->
+    <select id="select" resultMap="BaseResultMap">
+        select id, user_name, password, is_enable, dept_code from z_demo
+        where is_enable = 'Y'
+        <if test="userName != null and userName != ''">
+            and user_name = #{userName}
+        </if>
+        <if test="password != null and password != ''">
+            and password = #{password}
+        </if>
+    </select>
+    <!--查询-->
+   <!-- <select id="select" resultMap="BaseResultMap">
+        select id, name user_name, 'admin' as password, 'A10' dept_code from hap_demo
+    </select>-->
+
+    <!--根据 id 查询-->
+    <select id="selectById" resultType="dev.pro.demo.dto.Demo">
+        select id, user_name, password, is_enable, dept_code from z_demo
+        where is_enable = 'Y'
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        insert into z_demo(user_name, password) values(#{userName}, #{password})
+    </insert>
+
+    <!--更新-->
+    <update id="update">
+      update z_demo set user_name = #{userName}, password = #{password}
+      where id = #{id}
+    </update>
+
+    <!--删除-->
+    <delete id="remove">
+      update z_demo set is_enable = 'N'
+      where id = #{id}
+    </delete>
+
+</mapper>

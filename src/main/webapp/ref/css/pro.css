@@ -1,0 +1,147 @@
+/*=====================================按钮===========================================*/
+/*按钮*/
+.button {
+    border: none;
+    padding: 6px 18px;
+    margin-left: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 3px;   /*圆角幅度*/
+    position: relative;
+}
+.button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 0.1;
+    transition: 0.5s
+}
+
+/*绿色*/
+.green {
+    background-color: #40a444;
+    color: white;
+}
+.green:hover { /*悬停*/
+    background-color: #4fb553;
+}
+.green:active { /*点击*/
+    background-color: #38823c;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 4px 15px 0 rgba(0,0,0,0.19);
+}
+/*蓝色*/
+.blue {
+    background-color: #008ebd;
+    color: white;
+}
+.blue:hover {
+    background-color: #009bcc;
+}
+.blue:active {
+    background-color: #006294;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 4px 15px 0 rgba(0,0,0,0.19);
+}
+/*红色*/
+.red {
+    background-color: #e44336;
+    color: white;
+}
+.red:hover {
+    background-color: #f44336;
+}
+.red:active {
+    background-color: #d44336;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 4px 15px 0 rgba(0,0,0,0.19);
+}
+/*灰色*/
+.grey {
+    background-color: #dcdcdc;
+    color: black;
+}
+.grey:hover {
+    background-color: #e7e7e7;
+}
+.grey:active {
+    background-color: #c8c8c8;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 4px 15px 0 rgba(0,0,0,0.19);
+}
+/*黑色*/
+.black {
+    background-color: #555555;
+    color: white;
+}
+.black:hover {
+    background-color: #4c4c4c;
+}
+.black:active {
+    background-color: #090909;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 4px 15px 0 rgba(0,0,0,0.19);
+}
+
+[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/*=====================================输入框===========================================*/
+.text {
+    width: 200px;
+    height: 26px;
+    border:1px solid #dbdbdb;
+    outline:none;
+    font-size: 14px;
+    border-radius: 3px;   /*圆角幅度*/
+    text-indent:10px;
+    margin-left: 5px;
+}
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+    float: left; }
+.col-sm-1 {
+    width: 8.33333%; }
+.col-sm-2 {
+    width: 16.66667%; }
+.col-sm-3 {
+    width: 25%; }
+.col-sm-4 {
+    width: 33.33333%; }
+.col-sm-5 {
+    width: 41.66667%; }
+.col-sm-6 {
+    width: 50%; }
+.col-sm-7 {
+    width: 58.33333%; }
+.col-sm-8 {
+    width: 66.66667%; }
+.col-sm-9 {
+    width: 75%; }
+.col-sm-10 {
+    width: 83.33333%; }
+.col-sm-11 {
+    width: 91.66667%; }
+.col-sm-12 {
+    width: 100%; }
+/*======================================文本==========================================*/
+a{
+    font-size: 10px;
+    color: rgba(121, 117, 121, 0.78);
+}
+
+.label {
+    font-size: 14px;
+    display: inline-flex;
+    text-align: right;
+}
+
+#login {
+    border: 0.5px solid rgba(161,161,161,0.76);
+    border-radius: 6px;
+    width: 700px;
+    z-index: 0;
+    background-color: #fafafa
+}
+
+.text-center {
+    text-align: center; /** 设置水平方向居中 */
+    vertical-align: middle /** 设置垂直方向居中 */
+}

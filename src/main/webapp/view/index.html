@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>主页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="/ref/img/favicon.png" rel="shortcut icon" >
+    <script src="/ref/js/jquery-3.3.1.js"></script>
+    <link href="/ref/css/pro.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<h3>spring：</h3><hr/>
+<input type="button" class="button blue" value="类 AOP" onclick="aop('/aop/class')"/>
+<input type="button" class="button blue" value="注解 AOP" onclick="aop('/aop/anno')"/>
+<input type="button" class="button blue" value="service Aop" onclick="aop('/aop/service')"/>
+
+<h3>测试页面：</h3><hr/>
+<a class="button red" href="/view/testparam.html"> 传参测试页面 </a>
+<a class="button red" href="/view/excel/import_excel.html"> excel 导入页面 </a>
+<a class="button red" href="/view/front/form.html"> 表单示例 </a>
+<a class="button red" href="/view/front/table.html"> 表格示例 </a>
+<a class="button red" href="/view/front/nav.html"> 导航栏示例 </a>
+
+<script>
+
+    /*
+    $.ajax({
+            url: url,
+            type: 'post',
+            data: JSON.stringify(d),             // 参数：对象和字符串可以直接传，数组或复杂对象需要转 json
+            dataType : 'json',                   // 返回类型：json. 若不是 json 类型可以不写
+            contentType : 'application/json',    // 参数类型：json.
+            success: function (rs) {},
+            error: function (rs) {}
+        });
+
+*/
+    function aop(url){
+        $.ajax({
+            url: url,
+            type: 'post',
+            success: function (rs) {
+                console.log(rs);
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.pro.excel.mapper.PartyInfoMapper">
+    <resultMap id="BaseResultMap" type="dev.pro.excel.dto.PartyInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="party_number" jdbcType="VARCHAR" property="partyNumber"/>
+        <result column="party_name" jdbcType="VARCHAR" property="partyName"/>
+        <result column="party_code" jdbcType="INTEGER" property="partyCode"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
+        <result column="start_date" jdbcType="TIMESTAMP" property="startDate"/>
+        <result column="end_date" jdbcType="TIMESTAMP" property="endDate"/>
+        <result column="party_amount" jdbcType="DECIMAL" property="partyAmount"/>
+        <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber"/>
+        <result column="request_id" jdbcType="BIGINT" property="requestId"/>
+        <result column="program_id" jdbcType="BIGINT" property="programId"/>
+        <result column="created_by" jdbcType="BIGINT" property="createdBy"/>
+        <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate"/>
+        <result column="last_updated_by" jdbcType="BIGINT" property="lastUpdatedBy"/>
+        <result column="last_update_date" jdbcType="TIMESTAMP" property="lastUpdateDate"/>
+        <result column="last_update_login" jdbcType="BIGINT" property="lastUpdateLogin"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, party_number, party_name, party_code, address, phone_number, start_date, end_date, 
+    party_amount, object_version_number, request_id, program_id, created_by, creation_date, 
+    last_updated_by, last_update_date, last_update_login
+  </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from z_party_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select id, party_number, party_name, party_code, address,
+            phone_number, start_date, end_date, party_amount,
+            object_version_number, request_id, program_id, created_by,
+            creation_date, last_updated_by, last_update_date, last_update_login
+        from z_party_info
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from z_party_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insert" parameterType="dev.pro.excel.dto.PartyInfo">
+      insert into z_party_info ( party_number, party_name,
+         party_code, address, phone_number,
+         start_date, end_date, party_amount,
+         object_version_number, request_id, program_id,
+         created_by, creation_date, last_updated_by,
+         last_update_date, last_update_login)
+       values (#{partyNumber,jdbcType=VARCHAR}, #{partyName,jdbcType=VARCHAR},
+         #{partyCode,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR},
+         #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{partyAmount,jdbcType=DECIMAL},
+         #{objectVersionNumber,jdbcType=BIGINT}, #{requestId,jdbcType=BIGINT}, #{programId,jdbcType=BIGINT},
+         #{createdBy,jdbcType=BIGINT}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdatedBy,jdbcType=BIGINT},
+         #{lastUpdateDate,jdbcType=TIMESTAMP}, #{lastUpdateLogin,jdbcType=BIGINT})
+  </insert>
+
+    <insert id="insertSelective" parameterType="dev.pro.excel.dto.PartyInfo">
+        insert into z_party_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="partyNumber != null">
+                party_number,
+            </if>
+            <if test="partyName != null">
+                party_name,
+            </if>
+            <if test="partyCode != null">
+                party_code,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="phoneNumber != null">
+                phone_number,
+            </if>
+            <if test="startDate != null">
+                start_date,
+            </if>
+            <if test="endDate != null">
+                end_date,
+            </if>
+            <if test="partyAmount != null">
+                party_amount,
+            </if>
+            <if test="objectVersionNumber != null">
+                object_version_number,
+            </if>
+            <if test="requestId != null">
+                request_id,
+            </if>
+            <if test="programId != null">
+                program_id,
+            </if>
+            <if test="createdBy != null">
+                created_by,
+            </if>
+            <if test="creationDate != null">
+                creation_date,
+            </if>
+            <if test="lastUpdatedBy != null">
+                last_updated_by,
+            </if>
+            <if test="lastUpdateDate != null">
+                last_update_date,
+            </if>
+            <if test="lastUpdateLogin != null">
+                last_update_login,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="partyNumber != null">
+                #{partyNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="partyName != null">
+                #{partyName,jdbcType=VARCHAR},
+            </if>
+            <if test="partyCode != null">
+                #{partyCode,jdbcType=INTEGER},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="partyAmount != null">
+                #{partyAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="objectVersionNumber != null">
+                #{objectVersionNumber,jdbcType=BIGINT},
+            </if>
+            <if test="requestId != null">
+                #{requestId,jdbcType=BIGINT},
+            </if>
+            <if test="programId != null">
+                #{programId,jdbcType=BIGINT},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=BIGINT},
+            </if>
+            <if test="creationDate != null">
+                #{creationDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdatedBy != null">
+                #{lastUpdatedBy,jdbcType=BIGINT},
+            </if>
+            <if test="lastUpdateDate != null">
+                #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateLogin != null">
+                #{lastUpdateLogin,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <!--批量插入数据-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into z_party_info (
+        party_number, party_name, party_code,
+        address, phone_number, start_date,
+        end_date, party_amount
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.partyNumber,jdbcType=VARCHAR}, #{item.partyName,jdbcType=VARCHAR},
+            #{item.partyCode,jdbcType=INTEGER}, #{item.address,jdbcType=VARCHAR},
+            #{item.phoneNumber,jdbcType=VARCHAR}, #{item.startDate,jdbcType=TIMESTAMP},
+            #{item.endDate,jdbcType=TIMESTAMP}, #{item.partyAmount,jdbcType=DECIMAL}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="dev.pro.excel.dto.PartyInfo">
+        update z_party_info
+        <set>
+            <if test="partyNumber != null">
+                party_number = #{partyNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="partyName != null">
+                party_name = #{partyName,jdbcType=VARCHAR},
+            </if>
+            <if test="partyCode != null">
+                party_code = #{partyCode,jdbcType=INTEGER},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                start_date = #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDate != null">
+                end_date = #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="partyAmount != null">
+                party_amount = #{partyAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="objectVersionNumber != null">
+                object_version_number = #{objectVersionNumber,jdbcType=BIGINT},
+            </if>
+            <if test="requestId != null">
+                request_id = #{requestId,jdbcType=BIGINT},
+            </if>
+            <if test="programId != null">
+                program_id = #{programId,jdbcType=BIGINT},
+            </if>
+            <if test="createdBy != null">
+                created_by = #{createdBy,jdbcType=BIGINT},
+            </if>
+            <if test="creationDate != null">
+                creation_date = #{creationDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdatedBy != null">
+                last_updated_by = #{lastUpdatedBy,jdbcType=BIGINT},
+            </if>
+            <if test="lastUpdateDate != null">
+                last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateLogin != null">
+                last_update_login = #{lastUpdateLogin,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="dev.pro.excel.dto.PartyInfo">
+    update z_party_info
+    set party_number = #{partyNumber,jdbcType=VARCHAR},
+      party_name = #{partyName,jdbcType=VARCHAR},
+      party_code = #{partyCode,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      party_amount = #{partyAmount,jdbcType=DECIMAL},
+      object_version_number = #{objectVersionNumber,jdbcType=BIGINT},
+      request_id = #{requestId,jdbcType=BIGINT},
+      program_id = #{programId,jdbcType=BIGINT},
+      created_by = #{createdBy,jdbcType=BIGINT},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      last_updated_by = #{lastUpdatedBy,jdbcType=BIGINT},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      last_update_login = #{lastUpdateLogin,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>

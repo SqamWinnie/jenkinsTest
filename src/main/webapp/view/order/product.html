@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>商品价目</title>
+    <link rel="shortcut icon" href="/ref/img/favicon.png" >
+    <link rel="stylesheet" href="/ref/css/bootstrap/bootstrap.min.css"/>
+    <script src="/ref/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+<!--测试-->
+<div id="product" class="container" style="padding-top:10px">
+    <table class="table table-bordered table-hover table-condensed table-striped text-center">
+        <thead>
+            <tr>
+                <th class="text-center" width="50px">序号</th>
+                <th class="text-center">商品名称</th>
+                <th class="text-center">商品价格</th>
+                <th class="text-center">是否优惠</th>
+                <th class="text-center">折扣</th>
+                <th class="text-center">是否启用</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+
+    var html1 = "<tr>" +
+        "<td>1</td>" +
+        "<td>单元格</td>" +
+        "<td>单元格</td>" +
+        "<td>单元格</td>" +
+        "<td>单元格</td>" +
+        "<td>单元格</td>" +
+        "</tr>";
+    $("#product").find('tbody').append(html1);
+</script>
+</body>
+</html>
